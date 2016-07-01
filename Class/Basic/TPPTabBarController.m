@@ -44,8 +44,6 @@
         self.view.backgroundColor = COLOR_RGB(245, 245, 245);
         self.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-        self.tabBar.backgroundImage = [[UIImage imageNamed:@"tabbar_bg.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-
         [self initControllers];
     }
 

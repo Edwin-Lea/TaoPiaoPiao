@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B7253B71D26CF4400A99589 /* TPPSliderShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7253B61D26CF4400A99589 /* TPPSliderShowView.m */; };
 		9E8E800A74C32111773AF370 /* mine_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E8E82F1F7C4156F18E6C459 /* mine_normal@3x.png */; };
 		9E8E803F75201CCD82D9EA0E /* snapshot1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E8E864D953D7DFD97B457B4 /* snapshot1.png */; };
 		9E8E805C0E8C72BDD0628756 /* tbbuy_checkbox_checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E8E808DBBEB8478143EE5A1 /* tbbuy_checkbox_checked@2x.png */; };
@@ -179,6 +180,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B7253B51D26CF4400A99589 /* TPPSliderShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPPSliderShowView.h; sourceTree = "<group>"; };
+		7B7253B61D26CF4400A99589 /* TPPSliderShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPPSliderShowView.m; sourceTree = "<group>"; };
 		9E8E800E0DE9B1BCCDAA2E9C /* mark_remind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mark_remind.png; sourceTree = "<group>"; };
 		9E8E80484727DA0DDB4F2F45 /* movie_loading3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movie_loading3.png; sourceTree = "<group>"; };
 		9E8E805965DB35A9B12F7619 /* share_alipay_timeline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_alipay_timeline.png; sourceTree = "<group>"; };
@@ -455,6 +458,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		9E8E817E67204DBA78F2F0C6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7B7253B51D26CF4400A99589 /* TPPSliderShowView.h */,
+				7B7253B61D26CF4400A99589 /* TPPSliderShowView.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		9E8E818A22056F42F1D65A51 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
@@ -662,6 +674,7 @@
 			isa = PBXGroup;
 			children = (
 				9E8E8347C79FDA9FEE1742B3 /* Film */,
+				9E8E817E67204DBA78F2F0C6 /* Common */,
 			);
 			path = UIViews;
 			sourceTree = "<group>";
@@ -1113,6 +1126,7 @@
 				9E8E89852E4C3520DDB46409 /* TPPViewController.m in Sources */,
 				9E8E830B08AAC6C49A76EA54 /* TPPNavigationController.m in Sources */,
 				9E8E87F01C80562BD96AC5A4 /* TPPTabBarController.m in Sources */,
+				7B7253B71D26CF4400A99589 /* TPPSliderShowView.m in Sources */,
 				9E8E81CD54BB646FC484ADA2 /* TPPCinemaViewController.m in Sources */,
 				9E8E8C8BA45877F1339FC4AA /* TPPDamaiViewController.m in Sources */,
 				9E8E8A205110CF872E8512DA /* TPPDiscoveryViewController.m in Sources */,

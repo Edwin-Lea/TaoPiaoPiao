@@ -47,6 +47,8 @@
     self = [super init];
 
     if (self) {
+        self.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+
         [self render];
     }
 

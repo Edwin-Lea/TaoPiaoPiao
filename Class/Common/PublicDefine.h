@@ -32,4 +32,8 @@
 #define MaxX(v)            CGRectGetMaxX((v).frame) //横坐标加上控件的宽度
 #define MaxY(v)            CGRectGetMaxY((v).frame) //纵坐标加上控件的高度
 
+// 首页page num
+#define FILM_PAGE_NUM 6
+#define FILM_FILE_NAME @"table_title"
+
 #endif /* PublicDefine_h */
