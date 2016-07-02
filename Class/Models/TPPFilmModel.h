@@ -40,5 +40,7 @@
 @property (nonatomic, copy) NSString *longTime;
 // 电影内容简介
 @property (nonatomic, copy) NSString *intro;
+// 人数
+@property (nonatomic, assign) NSUInteger wants;
 
 @end

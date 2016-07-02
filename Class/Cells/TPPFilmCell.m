@@ -83,8 +83,8 @@
 
 - (UILabel *)subTitleLabel {
     if (!_subTitleLabel) {
-        _subTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(MinX(self.titleLabel), (MaxY(self.starMarkView)+12), 215, 13)];
-        _subTitleLabel.font = [UIFont systemFontOfSize:12];
+        _subTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(MinX(self.titleLabel), (MaxY(self.starMarkView)+13), 215, 14)];
+        _subTitleLabel.font = [UIFont systemFontOfSize:13];
         _subTitleLabel.text = self.data.subTitle;
         [_subTitleLabel setTextColor:COLOR_RGB(138, 134, 158)];
         // 自适应UILabel宽度
@@ -96,8 +96,8 @@
 
 - (UILabel *)actorsLabel {
     if (!_actorsLabel) {
-        _actorsLabel = [[UILabel alloc] initWithFrame:CGRectMake(MinX(self.titleLabel), (MaxY(self.subTitleLabel)+6), 215, 13)];
-        _actorsLabel.font = [UIFont systemFontOfSize:12];
+        _actorsLabel = [[UILabel alloc] initWithFrame:CGRectMake(MinX(self.titleLabel), (MaxY(self.subTitleLabel)+3), 215, 14)];
+        _actorsLabel.font = [UIFont systemFontOfSize:13];
         _actorsLabel.text = self.data.actors;
         [_actorsLabel setTextColor:COLOR_RGB(138, 134, 158)];
         // 自适应UILabel宽度
@@ -139,6 +139,51 @@
     return _button;
 }
 
+- (UILabel *)wantsLabel {
+    if (!_wantsLabel) {
+        _wantsLabel = [[UILabel alloc] initWithFrame:CGRectMake(MinX(self.titleLabel), (MaxY(self.titleLabel)+4), 210, 11)];
+        _wantsLabel.text = [NSString stringWithFormat:@"%d人想看", self.data.wants];
+        _wantsLabel.font = [UIFont systemFontOfSize:10];
+        [_wantsLabel setTextColor:COLOR_RGB(254, 165, 76)];
+        // 自适应UILabel宽度
+        [TextEnhance resizeUILabelWidth:_wantsLabel];
+    }
+
+    return _wantsLabel;
+}
+
+/**
+ * 设定导演字标
+ */
+- (UILabel *)directorLabel {
+    if (!_directorLabel) {
+        _directorLabel = [[UILabel alloc] initWithFrame:CGRectMake(MinX(self.titleLabel), (MaxY(self.wantsLabel)+13), 215, 14)];
+        _directorLabel.font = [UIFont systemFontOfSize:13];
+        _directorLabel.text = [NSString stringWithFormat:@"导演: %@", self.data.director];
+        [_directorLabel setTextColor:COLOR_RGB(138, 134, 158)];
+        // 自适应UILabel宽度
+        [TextEnhance resizeUILabelWidth:_directorLabel];
+    }
+
+    return _directorLabel;
+}
+
+/**
+ * 具有主演 字标 的actorsLabel方法
+ */
+- (UILabel *)actorsLabelS {
+    if (!_actorsLabel) {
+        _actorsLabel = [[UILabel alloc] initWithFrame:CGRectMake(MinX(self.titleLabel), (MaxY(self.directorLabel)+3), 215, 14)];
+        _actorsLabel.font = [UIFont systemFontOfSize:13];
+        _actorsLabel.text = [NSString stringWithFormat:@"主演: %@", self.data.actors];
+        [_actorsLabel setTextColor:COLOR_RGB(138, 134, 158)];
+        // 自适应UILabel宽度
+        [TextEnhance resizeUILabelWidth:_actorsLabel];
+    }
+
+    return _actorsLabel;
+}
+
 - (UIView *)underline{
     if (!_underline) {
         _underline = [[UIView alloc] initWithFrame:CGRectMake(15, 0, (SCREEN_WIDTH-15), 0.5)];
@@ -175,9 +220,11 @@
         [self.contentView addSubview:self.filmImage];
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.button];
-        // TODO : 添加导演和主演标签
+
+        [self.contentView addSubview:self.wantsLabel];
+        [self.contentView addSubview:self.directorLabel];
+        [self.contentView addSubview:[self actorsLabelS]];
         [self addTag];
-        // TODO : 添加多少人想看标签
         return self;
     } else {
         return nil;

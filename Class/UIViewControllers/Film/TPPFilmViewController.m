@@ -73,7 +73,7 @@
 
 - (TPPComingSoonView *)comingSoonView {
     if (!_comingSoonView) {
-        _comingSoonView = [[TPPComingSoonView alloc] initWithFrame:CGRectMake(0, 44, SCREEN_WIDTH, (SCREEN_HEIGHT-64-44)) style:UITableViewStyleGrouped];
+        _comingSoonView = [[TPPComingSoonView alloc] initWithFrame:CGRectMake(0, 44, SCREEN_WIDTH, (SCREEN_HEIGHT-64-44-44)) style:UITableViewStyleGrouped];
     }
 
     return _comingSoonView;

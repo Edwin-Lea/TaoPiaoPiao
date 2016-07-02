@@ -29,7 +29,7 @@
 @interface TPPCurrentHotView() <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, weak) id<TPPFilmCurrentHotDelegate> currentHotDelegate;
-@property (nonatomic, strong) NSMutableArray *data;
+@property (nonatomic, strong) NSMutableArray *datas;
 
 @end
 
@@ -46,9 +46,6 @@
         self.backgroundColor = COLOR_RGB(245, 245, 245);
 
         self.tableHeaderView = [[TPPSliderShowView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 150) num:FILM_PAGE_NUM filename:FILM_FILE_NAME width:300 height:8];
-       /* UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
-        footerView.backgroundColor = COLOR_RGB(245, 245, 245);
-        self.tableFooterView = footerView;*/
 
         self.minimumZoomScale = 1.0;
         self.maximumZoomScale = 1.0;
@@ -56,6 +53,7 @@
         self.showsHorizontalScrollIndicator = NO;
         self.showsVerticalScrollIndicator = NO;
 
+        // 不要cell间的分割线
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
 
         self.delegate = self;
@@ -67,12 +65,12 @@
     return self;
 }
 
-- (NSMutableArray *)data {
-    if (!_data) {
-        _data = [NSMutableArray array];
+- (NSMutableArray *)datas {
+    if (!_datas) {
+        _datas = [NSMutableArray array];
     }
     
-    return _data;
+    return _datas;
 }
 
 - (void)initData {
@@ -115,14 +113,14 @@
     film3.time = 1467388800;
 
 
-    [self.data addObjectsFromArray:@[film1, activity1, activity2, film2, film3]];
+    [self.datas addObjectsFromArray:@[film1, activity1, activity2, film2, film3]];
 }
 
 #pragma mark -
 #pragma mark UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    return self.data.count;
+    return self.datas.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -132,8 +130,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (!cell) {
-        if (indexPath.row >= 0 && indexPath.row < self.data.count) {
-            NSObject *data = self.data[(NSUInteger)indexPath.row];
+        if (indexPath.row >= 0 && indexPath.row < self.datas.count) {
+            NSObject *data = self.datas[(NSUInteger)indexPath.row];
             if (data && [data isKindOfClass:[TPPFilmModel class]]) {
                 TPPFilmCell *filmCell = [[TPPFilmCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
                 [filmCell setData:(TPPFilmModel *)data];
@@ -168,7 +166,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSUInteger index = (NSUInteger) indexPath.row;
-    NSObject *data = self.data[index];
+    NSObject *data = self.datas[index];
     if (data && [data isKindOfClass:[TPPFilmModel class]]) {
         return 113;
     } else if (data && [data isKindOfClass:[TPPFilmActivityModel class]]) {

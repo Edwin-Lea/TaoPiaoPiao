@@ -14,4 +14,6 @@
 
 + (NSString *)printDate:(double)time;
 
++ (NSString *)getWeakDay:(double)time;
+
 @end
