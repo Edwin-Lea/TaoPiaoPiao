@@ -9,6 +9,7 @@
 
 #import "AppDelegate.h"
 #import "TPPTabBarController.h"
+#import "CoreDataManager.h"
 
 
 @interface AppDelegate ()
@@ -52,6 +53,8 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    // 推出前保存数据修改到CoreData中
+    [[CoreDataManager getInstance] saveContext];
 }
 
 
