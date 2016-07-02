@@ -233,7 +233,7 @@
 }
 
 - (void)add3DTag {
-    UILabel *tag = [[UILabel alloc] initWithFrame:CGRectMake((MaxX(self.titleLabel)+6), MinY(self.titleLabel), 17, 13)];
+    UILabel *tag = [[UILabel alloc] initWithFrame:CGRectMake((MaxX(self.titleLabel)+6), MinY(self.titleLabel)+2, 17, 13)];
     tag.layer.borderWidth = 1;
     tag.layer.borderColor = COLOR_RGB(185, 183, 197).CGColor;
     tag.layer.cornerRadius = 2;

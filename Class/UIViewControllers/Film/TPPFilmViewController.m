@@ -65,7 +65,7 @@
 
 - (TPPCurrentHotView *)currentHotView {
     if (!_currentHotView) {
-        _currentHotView = [[TPPCurrentHotView alloc] initWithFrame:CGRectMake(0, 44, SCREEN_WIDTH, (SCREEN_HEIGHT-64-44)) style:UITableViewStylePlain];
+        _currentHotView = [[TPPCurrentHotView alloc] initWithFrame:CGRectMake(0, 44, SCREEN_WIDTH, (SCREEN_HEIGHT-64-44-44)) style:UITableViewStylePlain];
     }
 
     return _currentHotView;
@@ -135,8 +135,13 @@
         _topBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
         _topBarView.backgroundColor = COLOR_RGB(242, 242, 242);
 
+        // 0.5下边界线
+        UIView *underline = [[UIView alloc] initWithFrame:CGRectMake(0, 43, SCREEN_WIDTH, 0.5)];
+        underline.backgroundColor = COLOR_RGB(215, 215, 215);
+
         [_topBarView addSubview:self.currentHotBtn];
         [_topBarView addSubview:self.comingSoonBtn];
+        [_topBarView addSubview:underline];
     }
 
     return _topBarView;

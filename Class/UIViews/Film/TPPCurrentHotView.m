@@ -10,6 +10,8 @@
 #import "TPPSliderShowView.h"
 #import "TPPFilmCell.h"
 #import "TPPFilmModel.h"
+#import "TPPFilmActivityModel.h"
+#import "TPPFilmActivityCell.h"
 
 
 #pragma mark -
@@ -41,7 +43,12 @@
     self = [super initWithFrame:frame style:style];
 
     if (self) {
+        self.backgroundColor = COLOR_RGB(245, 245, 245);
+
         self.tableHeaderView = [[TPPSliderShowView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 150) num:FILM_PAGE_NUM filename:FILM_FILE_NAME width:300 height:8];
+       /* UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
+        footerView.backgroundColor = COLOR_RGB(245, 245, 245);
+        self.tableFooterView = footerView;*/
 
         self.minimumZoomScale = 1.0;
         self.maximumZoomScale = 1.0;
@@ -79,6 +86,14 @@
     film1.image = @"movie9.jpg";
     film1.time = 1477388800;
 
+    TPPFilmActivityModel *activity1 = [[TPPFilmActivityModel alloc] init];
+    activity1.name = @"14.8元起抢票";
+    activity1.intro = @"《忍者神龟2》特惠,名额有限,先到先得!";
+
+    TPPFilmActivityModel *activity2 = [[TPPFilmActivityModel alloc] init];
+    activity2.name = @"神龟正版周边";
+    activity2.intro = @"超值抢购  全场包邮";
+
     TPPFilmModel *film2 = [[TPPFilmModel alloc] init];
     film2.title = @"忍者神龟2：破影而出";
     film2.subTitle = @"变种反派集合，梅根迷倒糖哥";
@@ -89,8 +104,18 @@
     film2.image = @"movie9.jpg";
     film2.time = 1467388800;
 
+    TPPFilmModel *film3 = [[TPPFilmModel alloc] init];
+    film3.title = @"忍者神龟2：破影而出";
+    film3.subTitle = @"变种反派集合，梅根迷倒糖哥";
+    film3.actors = @"梅根·福克斯,亚历桑德拉·安布罗休,斯蒂芬·阿梅尔,阿伦·瑞奇森";
+    film3.mark = 8.4;
+    film3.ribbonType = 8;
+    film3.tagType = 2;
+    film3.image = @"movie1.jpg";
+    film3.time = 1467388800;
 
-    [self.data addObjectsFromArray:@[film1, film2]];
+
+    [self.data addObjectsFromArray:@[film1, activity1, activity2, film2, film3]];
 }
 
 #pragma mark -
@@ -108,10 +133,18 @@
     
     if (!cell) {
         if (indexPath.row >= 0 && indexPath.row < self.data.count) {
-            TPPFilmCell *filmCell = [[TPPFilmCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-            [filmCell setData:self.data[(NSUInteger)indexPath.row]];
-
-            cell = [filmCell renderCurrentHotSell];
+            NSObject *data = self.data[(NSUInteger)indexPath.row];
+            if (data && [data isKindOfClass:[TPPFilmModel class]]) {
+                TPPFilmCell *filmCell = [[TPPFilmCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+                [filmCell setData:(TPPFilmModel *)data];
+                cell = [filmCell renderCurrentHotSell];
+            } else if (data && [data isKindOfClass:[TPPFilmActivityModel class]]) {
+                TPPFilmActivityCell *activityCell = [[TPPFilmActivityCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+                [activityCell setData:(TPPFilmActivityModel *)data];
+                cell = [activityCell render];
+            } else {
+                cell = nil;
+            }
         }
     }
     
@@ -134,7 +167,15 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 113;
+    NSUInteger index = (NSUInteger) indexPath.row;
+    NSObject *data = self.data[index];
+    if (data && [data isKindOfClass:[TPPFilmModel class]]) {
+        return 113;
+    } else if (data && [data isKindOfClass:[TPPFilmActivityModel class]]) {
+        return 40;
+    } else {
+        return 0;
+    }
 }
 
 @end
