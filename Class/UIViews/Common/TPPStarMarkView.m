@@ -8,8 +8,8 @@
 
 #import "TPPStarMarkView.h"
 
-#define SHARE_STAR_WIDTH (54/2)
-#define SHARE_STAR_HEIGHT (45/2)
+#define SHARE_STAR_WIDTH (24/2)
+#define SHARE_STAR_HEIGHT (20/2)
 
 @implementation TPPStarMarkView
 
@@ -23,9 +23,11 @@
     return self;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame mark:(CGFloat)mark {
-    self = [super initWithFrame:frame];
+- (instancetype)initWithPoint:(CGPoint)point mark:(CGFloat)mark {
+    self = [super init];
     if (self) {
+        self.frame = CGRectMake(point.x, point.y, SHARE_STAR_WIDTH*5, SHARE_STAR_HEIGHT);
+
         _mark = mark;
 
         [self renderStartWithMark];

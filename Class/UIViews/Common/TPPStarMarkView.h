@@ -15,7 +15,7 @@
 
 @property (nonatomic, assign) CGFloat mark;
 
-- (instancetype)initWithFrame:(CGRect)frame mark:(CGFloat)mark;
+- (instancetype)initWithPoint:(CGPoint)point mark:(CGFloat)mark;
 
 - (instancetype)render;
 

@@ -20,7 +20,6 @@
     CGSize size = CGSizeMake(rect.size.width, rect.size.height);
 
     CGRect labelSize = [str boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: font} context:nil];
-    NSLog(@"文本调整结果 : %@", NSStringFromCGRect(labelSize));
     // 调整frame
     rect.size.width = labelSize.size.width;
     rect.size.height = labelSize.size.height;

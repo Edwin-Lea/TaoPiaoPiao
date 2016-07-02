@@ -8,10 +8,11 @@
 
 #import "TPPCurrentHotView.h"
 #import "TPPSliderShowView.h"
+#import "TPPFilmCell.h"
+#import "TPPFilmModel.h"
 
 
-
-#pragma mark - 
+#pragma mark -
 #pragma mark Protocal TPPFilmCurrentHotDelegate
 @protocol TPPFilmCurrentHotDelegate
 
@@ -66,9 +67,18 @@
 }
 
 - (void)initData {
-    [self.data addObject:@"tom tang"];
-    [self.data addObject:@"blackcater"];
-    [self.data addObject:@"Tangyinong"];
+    TPPFilmModel *film1 = [[TPPFilmModel alloc] init];
+    film1.title = @"忍者神龟2：破影而出";
+    film1.subTitle = @"变种反派集合，梅根迷倒糖哥";
+    film1.actors = @"梅根·福克斯,亚历桑德拉·安布罗休,斯蒂芬·阿梅尔,阿伦·瑞奇森";
+    film1.mark = 8.4;
+    film1.ribbonType = 1;
+    film1.tagType = 2;
+    film1.image = @"movie9.jpg";
+    film1.time = 1477388800;
+
+
+    [self.data addObject:film1];
 }
 
 #pragma mark -
@@ -86,8 +96,10 @@
     
     if (!cell) {
         if (indexPath.row >= 0 && indexPath.row < self.data.count) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-            cell.textLabel.text = self.data[indexPath.row];
+            TPPFilmCell *filmCell = [[TPPFilmCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+            [filmCell setData:self.data[(NSUInteger)indexPath.row]];
+
+            cell = [filmCell renderCurrentHotSell];
         }
     }
     
@@ -105,6 +117,12 @@
 - (void)tableView:(UITableView *)tableView
         didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // TODO : 当点击某个cell的时候, 做一些事情
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [cell setSelected:!cell.selected];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 113;
 }
 
 @end

@@ -19,13 +19,13 @@
 // 电影图片
 @property (nonatomic, copy) NSString *image;
 // 电影评分
-@property (nonatomic, assign) double mark;
+@property (nonatomic, assign) float mark;
 // 电影上映时间
 @property (nonatomic, assign) double time;
-// 电影当前状态0 : 无  1 特别推荐 2 今日最热 3 特别推荐
-@property (nonatomic, assign) double tagType;
+// 电影当前状态0 : 无  1 特别推荐 2 今日最热 4 口碑最佳 8 一周最热
+@property (nonatomic, assign) int ribbonType;
 // 电影类型 0 无 1 3D 2 3DIMAX
-@property (nonatomic, assign) double titleTag;
+@property (nonatomic, assign) int tagType;
 // 电影导演
 @property (nonatomic, copy) NSString *director;
 // 电影演员
