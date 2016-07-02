@@ -27,6 +27,8 @@
 @property (nonatomic, strong)UILabel *actorsLabel;
 // 多少人想看
 @property (nonatomic, strong)UILabel *wantsLabel;
+// 线
+@property (nonatomic, strong)UIView *underline;
 // 按钮
 @property (nonatomic, strong)UIButton *button;
 // 渲染数据
@@ -137,9 +139,19 @@
     return _button;
 }
 
+- (UIView *)underline{
+    if (!_underline) {
+        _underline = [[UIView alloc] initWithFrame:CGRectMake(15, 0, (SCREEN_WIDTH-15), 0.5)];
+        _underline.backgroundColor =  COLOR_RGB(226, 226, 226);
+    }
+
+    return _underline;
+}
+
 - (instancetype)renderCurrentHotSell {
     if (self.data) {
         // 构造出 正在上映cell
+        [self.contentView addSubview:self.underline];
         [self.contentView addSubview:self.filmImage];
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.button];
@@ -159,6 +171,7 @@
 - (instancetype)renderComingSoonSell {
     if (self.data) {
         // 构造出 即将上映cell
+        [self.contentView addSubview:self.underline];
         [self.contentView addSubview:self.filmImage];
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.button];
@@ -223,12 +236,13 @@
     UILabel *tag = [[UILabel alloc] initWithFrame:CGRectMake((MaxX(self.titleLabel)+6), MinY(self.titleLabel), 17, 13)];
     tag.layer.borderWidth = 1;
     tag.layer.borderColor = COLOR_RGB(185, 183, 197).CGColor;
-    tag.layer.cornerRadius = 1;
+    tag.layer.cornerRadius = 2;
     tag.backgroundColor = COLOR_RGB(185, 183, 197);
     tag.text = @"3D";
     tag.textAlignment = NSTextAlignmentCenter;
-    tag.textColor = [UIColor clearColor];
+    tag.textColor = [UIColor whiteColor];
     tag.font = [UIFont systemFontOfSize:6];
+    tag.clipsToBounds = YES;
 
     [self.contentView addSubview:tag];
 }

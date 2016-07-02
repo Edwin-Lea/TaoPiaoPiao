@@ -49,6 +49,8 @@
         self.showsHorizontalScrollIndicator = NO;
         self.showsVerticalScrollIndicator = NO;
 
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
+
         self.delegate = self;
         self.dataSource = self;
         
@@ -77,8 +79,18 @@
     film1.image = @"movie9.jpg";
     film1.time = 1477388800;
 
+    TPPFilmModel *film2 = [[TPPFilmModel alloc] init];
+    film2.title = @"忍者神龟2：破影而出";
+    film2.subTitle = @"变种反派集合，梅根迷倒糖哥";
+    film2.actors = @"梅根·福克斯,亚历桑德拉·安布罗休,斯蒂芬·阿梅尔,阿伦·瑞奇森";
+    film2.mark = 8.4;
+    film2.ribbonType = 4;
+    film2.tagType = 1;
+    film2.image = @"movie9.jpg";
+    film2.time = 1467388800;
 
-    [self.data addObject:film1];
+
+    [self.data addObjectsFromArray:@[film1, film2]];
 }
 
 #pragma mark -
