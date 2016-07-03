@@ -7,10 +7,12 @@
 //
 
 #import "TPPCinemaViewController.h"
+#import "TPPCinemaTableView.h"
 
 @interface TPPCinemaViewController()
 
-
+@property (nonatomic, strong) TPPCinemaTableView *cinemaTableView;
+@property (nonatomic, strong) UIView *underline;
 
 @end
 
@@ -39,10 +41,33 @@
 
     if (self) {
         self.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-        self.view.backgroundColor = [UIColor blueColor];
+
+
+        [self render];
     }
 
     return self;
+}
+
+- (void)render {
+    [self.view addSubview:self.cinemaTableView];
+}
+
+- (TPPCinemaTableView *)cinemaTableView {
+    if (!_cinemaTableView) {
+        _cinemaTableView = [[TPPCinemaTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_HEIGHT-64-44)) style:UITableViewStylePlain];
+    }
+
+    return _cinemaTableView;
+}
+
+- (UIView *)underline {
+    if (!_underline) {
+        _underline = [[UIView alloc] initWithFrame:CGRectMake(0, -1, SCREEN_WIDTH, 0.5)];
+        _underline.backgroundColor = COLOR_RGB(226, 226, 226);
+    }
+
+    return _underline;
 }
 
 @end

@@ -93,6 +93,16 @@
 }
 
 #pragma mark -
+#pragma mark UIScrollViewDelegate
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    NSLog(@"scrollView end dragging : %@", NSStringFromCGPoint(scrollView.contentOffset));
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    // TODO : 监测滚动
+}
+
+#pragma mark -
 #pragma mark UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // 点击的时候, 做一些事情
@@ -141,7 +151,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellIdentifier = @"ComingSoonCell";
+    NSString *cellIdentifier = @"TPPComingSoonCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 
     if (!cell) {

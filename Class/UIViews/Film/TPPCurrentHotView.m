@@ -125,7 +125,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // TODO : 返回自定义cell
     NSString *cellIdentifier = @"TPPCurrentHotCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
