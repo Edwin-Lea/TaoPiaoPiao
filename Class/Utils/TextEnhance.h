@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @class UILabel;
+@class UIButton;
 
 @interface TextEnhance : NSObject
 
 + (void)resizeUILabelWidth:(UILabel *)label;
+
++ (void)resizeUIButtonWith:(UIButton *)label;
 
 @end

@@ -41,6 +41,8 @@
     self = [super init];
 
     if (self) {
+        self.view.backgroundColor = [UIColor whiteColor];
+
         [self render];
     }
 
@@ -49,11 +51,13 @@
 
 - (void)render {
     // TODO : 添加渲染规则
+    [self.view addSubview:self.topBarView];
 }
 
 - (TPPDamaiTopBarView *)topBarView {
     if (!_topBarView) {
-        _topBarView = [[TPPDamaiTopBarView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 42)];
+        NSArray *categories = @[@"全部演出", @"演唱会", @"音乐会", @"话剧歌剧", @"舞蹈芭蕾", @"曲艺杂坛"];
+        _topBarView = [[TPPDamaiTopBarView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 42) categoreis:categories];
     }
 
     return _topBarView;

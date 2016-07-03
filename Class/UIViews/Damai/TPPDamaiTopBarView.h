@@ -10,4 +10,6 @@
 
 @interface TPPDamaiTopBarView : UIView
 
+- (instancetype)initWithFrame:(CGRect)frame categoreis:(NSArray *)categories;
+
 @end
