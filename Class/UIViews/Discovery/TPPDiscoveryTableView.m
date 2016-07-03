@@ -92,7 +92,7 @@
                     {
                         // 1 新闻类
                         TPPDiscoveryNewsCell *newsCell = [[TPPDiscoveryNewsCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-                        [newsCell setData:cData];
+                        [newsCell setData:cdata];
                         cell = [newsCell render];
                     }
                         break;
@@ -100,7 +100,7 @@
                     {
                         // 2 话题讨论类
                         TPPDiscoveryTalkCell *newsCell = [[TPPDiscoveryTalkCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-                        [newsCell setData:cData];
+                        [newsCell setData:cdata];
                         cell = [newsCell render];
                     }
                         break;
@@ -108,7 +108,7 @@
                     {
                         // 3 台词类
                         TPPDiscoveryLinesCell *newsCell = [[TPPDiscoveryLinesCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-                        [newsCell setData:cData];
+                        [newsCell setData:cdata];
                         cell = [newsCell render];
                     }
                         break;

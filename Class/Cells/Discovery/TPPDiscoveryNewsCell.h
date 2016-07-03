@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class TPPDiscoveryModel;
+
 @interface TPPDiscoveryNewsCell : UITableViewCell
+
+- (void)setData:(TPPDiscoveryModel *)data ;
+
+- (instancetype)render;
 
 @end

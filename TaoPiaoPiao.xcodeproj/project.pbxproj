@@ -74,6 +74,7 @@
 		9E8E84D9254ECFD6BACE643F /* quick_scan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E8E8AEEC35DDAC0271638A2 /* quick_scan@3x.png */; };
 		9E8E84DC01E49AD8525DAD15 /* snapshot1_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E8E8D8B97A56A57413E53AF /* snapshot1_2.png */; };
 		9E8E84DF42C87EA5BBC1C3EA /* watermark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E8E84DC065CE1750B34C8AC /* watermark.png */; };
+		9E8E85396DEE4F710F1FA787 /* TPPDiscoveryCommonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8E84E0061E4B1A2B7EA752 /* TPPDiscoveryCommonView.m */; };
 		9E8E8545CE08C82807DA5750 /* spinner_48_inner_holo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E8E8CD992C48CE506C0CE53 /* spinner_48_inner_holo.png */; };
 		9E8E85516A7B270BC5FC8D45 /* damai_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E8E8F0EBABC26F0E28E714E /* damai_normal@3x.png */; };
 		9E8E8556FD5B8AF81D7EED43 /* lasted_cinema@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E8E89756F9DD458F9E85ED7 /* lasted_cinema@2x.png */; };
@@ -305,6 +306,7 @@
 		9E8E84C651F586C99A55FB78 /* icon-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-50@2x.png"; sourceTree = "<group>"; };
 		9E8E84C8219E108B53CBD264 /* TPP3DIMAXTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPP3DIMAXTagView.m; sourceTree = "<group>"; };
 		9E8E84DC065CE1750B34C8AC /* watermark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watermark.png; sourceTree = "<group>"; };
+		9E8E84E0061E4B1A2B7EA752 /* TPPDiscoveryCommonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPPDiscoveryCommonView.m; sourceTree = "<group>"; };
 		9E8E84F2461FE43C5163DB78 /* order_loading_9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = order_loading_9.png; sourceTree = "<group>"; };
 		9E8E84FF8EC34420745A52D4 /* tbbuy_item_decrease@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tbbuy_item_decrease@2x.png"; sourceTree = "<group>"; };
 		9E8E8505423D5B09A77389AE /* star_for_share_empty@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_for_share_empty@3x.png"; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 		9E8E8B286D7437788D7640B4 /* table_title4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = table_title4.jpg; sourceTree = "<group>"; };
 		9E8E8B2FF13F1701DB6E22AC /* share_qq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_qq.png; sourceTree = "<group>"; };
 		9E8E8B39F202F25442E3CF2C /* seat_lover_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seat_lover_empty.png; sourceTree = "<group>"; };
+		9E8E8B4546E213446D24BE13 /* TPPDiscoveryCommonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPPDiscoveryCommonView.h; sourceTree = "<group>"; };
 		9E8E8B502A7EB7D1D38212E5 /* TPPDiscoveryNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPPDiscoveryNewsCell.m; sourceTree = "<group>"; };
 		9E8E8B54B87B1F988FDBC764 /* TPPLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPPLoadingView.h; sourceTree = "<group>"; };
 		9E8E8B754317682021923910 /* discovery_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "discovery_selected@3x.png"; sourceTree = "<group>"; };
@@ -597,6 +600,8 @@
 				9E8E84C8219E108B53CBD264 /* TPP3DIMAXTagView.m */,
 				9E8E8B54B87B1F988FDBC764 /* TPPLoadingView.h */,
 				9E8E807E264DA50548E4E3DC /* TPPLoadingView.m */,
+				9E8E8B4546E213446D24BE13 /* TPPDiscoveryCommonView.h */,
+				9E8E84E0061E4B1A2B7EA752 /* TPPDiscoveryCommonView.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1452,6 +1457,7 @@
 				9E8E801B4C6BFC8308C7372F /* TPPDiscoveryNewsCell.m in Sources */,
 				9E8E8410D4004E96B28471FF /* TPPDiscoveryLinesCell.m in Sources */,
 				9E8E8AF5F324E326C02E18E7 /* TPPDiscoveryModel.m in Sources */,
+				9E8E85396DEE4F710F1FA787 /* TPPDiscoveryCommonView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
