@@ -137,7 +137,6 @@
                 TPPDamaiCell *cinemaCell = [[TPPDamaiCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
                 [cinemaCell setData:(TPPDamaiModel *)data];
                 cell = [cinemaCell render];
-                cell.selectedBackgroundView = [[UIView alloc] init];
             } else {
                 cell = nil;
             }

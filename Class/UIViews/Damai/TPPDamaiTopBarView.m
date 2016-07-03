@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UIView *underline;
 @property (nonatomic, strong) UIView *categoryLine;
 @property (nonatomic, strong) NSArray *categories;
+@property (nonatomic, strong) NSMutableArray *buttons;
 
 @end
 
@@ -91,6 +92,14 @@
     return _categoryLine;
 }
 
+- (NSMutableArray *)buttons {
+    if (!_buttons) {
+        _buttons = [NSMutableArray array];
+    }
+
+    return _buttons;
+}
+
 - (void)addCategories {
     CGFloat left = 0;
     for (int i = 0; i < self.categories.count; ++i) {
@@ -117,6 +126,8 @@
             [button setSelected:YES];
             [self performSelector:@selector(categoryBtnClickHandler:) withObject:button];
         }
+
+        [self.buttons addObject:button];
     }
 
     self.categoryScrollView.contentSize = CGSizeMake(left, (self.frame.size.height-1));
@@ -130,6 +141,12 @@
     if (sender && [sender isKindOfClass:[UIButton class]]) {
         UIButton *button = (UIButton *)sender; // +20
         CGRect rect = button.frame;
+        // 重置激活状态
+        for (int i = 0; i < self.buttons.count; ++i) {
+            [self.buttons[(NSUInteger) i] setSelected:NO];
+        }
+        // 动画
+        [button setSelected:YES];
         [UIView animateWithDuration:.2 delay:.0 options:UIViewAnimationOptionCurveEaseInOut animations:^ {
             CGRect lineFrame = self.categoryLine.frame;
             lineFrame.size.width = (rect.size.width-20);
