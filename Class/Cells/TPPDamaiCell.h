@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class TPPDamaiModel;
+
 @interface TPPDamaiCell : UITableViewCell
+
+- (void)setData:(TPPDamaiModel *)data;
+
+- (instancetype)render;
 
 @end

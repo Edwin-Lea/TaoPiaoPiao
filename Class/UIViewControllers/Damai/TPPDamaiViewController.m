@@ -50,17 +50,25 @@
 }
 
 - (void)render {
-    // TODO : 添加渲染规则
     [self.view addSubview:self.topBarView];
+    [self.view addSubview:self.damaiTableView];
 }
 
 - (TPPDamaiTopBarView *)topBarView {
     if (!_topBarView) {
-        NSArray *categories = @[@"全部演出", @"演唱会", @"音乐会", @"话剧歌剧", @"舞蹈芭蕾", @"曲艺杂坛"];
+        NSArray *categories = @[@"全部演出", @"演唱会", @"音乐会", @"话剧歌剧", @"舞蹈芭蕾", @"曲苑杂坛"];
         _topBarView = [[TPPDamaiTopBarView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 42) categoreis:categories];
     }
 
     return _topBarView;
+}
+
+- (TPPDamaiTableView *)damaiTableView {
+    if (!_damaiTableView) {
+        _damaiTableView = [[TPPDamaiTableView alloc] initWithFrame:CGRectMake(0, 42, SCREEN_WIDTH, (SCREEN_HEIGHT-64-44-42)) style:UITableViewStylePlain];
+    }
+
+    return _damaiTableView;
 }
 
 @end
