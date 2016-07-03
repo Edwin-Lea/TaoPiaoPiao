@@ -26,6 +26,10 @@
     [super viewWillDisappear:animated];
 }
 
+- (void)removeUnderline {
+    [self.navigationBar setShadowImage:[UIImage new]];
+}
+
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController {
     self = [super initWithRootViewController:rootViewController];
 
@@ -35,7 +39,6 @@
         self.view.backgroundColor = [UIColor yellowColor];
         self.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"tabbar_bg.png"] forBarMetrics:UIBarMetricsDefault];
-        [self.navigationBar setShadowImage:[UIImage new]];
     }
 
     return self;

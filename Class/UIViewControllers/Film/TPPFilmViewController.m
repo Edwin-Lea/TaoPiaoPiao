@@ -9,6 +9,7 @@
 #import "TPPFilmViewController.h"
 #import "TPPCurrentHotView.h"
 #import "TPPComingSoonView.h"
+#import "TPPNavigationController.h"
 
 @interface TPPFilmViewController() <UIScrollViewDelegate>
 
@@ -36,6 +37,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+
+    TPPNavigationController *navigationController = (TPPNavigationController *)self.navigationController;
+    [navigationController removeUnderline];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

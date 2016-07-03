@@ -10,4 +10,6 @@
 
 @interface TPPNavigationController : UINavigationController
 
+- (void)removeUnderline;
+
 @end

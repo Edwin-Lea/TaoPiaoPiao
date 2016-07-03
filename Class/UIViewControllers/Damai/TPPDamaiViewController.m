@@ -7,6 +7,15 @@
 //
 
 #import "TPPDamaiViewController.h"
+#import "TPPDamaiTableView.h"
+#import "TPPDamaiTopBarView.h"
+
+@interface TPPDamaiViewController()
+
+@property (nonatomic, strong) TPPDamaiTopBarView *topBarView;
+@property (nonatomic, strong) TPPDamaiTableView *damaiTableView;
+
+@end
 
 @implementation TPPDamaiViewController
 
@@ -32,10 +41,22 @@
     self = [super init];
 
     if (self) {
-
+        [self render];
     }
 
     return self;
+}
+
+- (void)render {
+    // TODO : 添加渲染规则
+}
+
+- (TPPDamaiTopBarView *)topBarView {
+    if (!_topBarView) {
+        _topBarView = [[TPPDamaiTopBarView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 42)];
+    }
+
+    return _topBarView;
 }
 
 @end
