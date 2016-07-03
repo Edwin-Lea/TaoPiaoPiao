@@ -7,6 +7,13 @@
 //
 
 #import "TPPDiscoveryViewController.h"
+#import "TPPDiscoveryTableView.h"
+
+@interface TPPDiscoveryViewController()
+
+@property (nonatomic, strong) TPPDiscoveryTableView *tableView;
+
+@end
 
 @implementation TPPDiscoveryViewController
 
@@ -36,6 +43,18 @@
     }
 
     return self;
+}
+
+- (void)render {
+    [self.view addSubview:self.tableView];
+}
+
+- (TPPDiscoveryTableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[TPPDiscoveryTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_HEIGHT-64-44)) style:UITableViewStyleGrouped];
+    }
+
+    return _tableView;
 }
 
 @end
