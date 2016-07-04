@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "TPPTabBarController.h"
 #import "CoreDataManager.h"
+#import "TPPWelcomeView.h"
 
 
 @interface AppDelegate ()
@@ -28,6 +29,12 @@
     self.window.rootViewController = [[TPPTabBarController alloc] init];
 
     [self.window makeKeyAndVisible];
+
+
+    // 添加新功能介绍页
+    TPPWelcomeView *welcomeViewController = [[TPPWelcomeView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    [self.window addSubview:welcomeViewController];
+
     return YES;
 }
 

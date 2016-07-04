@@ -36,4 +36,8 @@
 #define FILM_PAGE_NUM 6
 #define FILM_FILE_NAME @"table_title"
 
+// 新功能介绍页
+#define WELCOME_PAHE_NUM 5
+#define WELCOME_FILE_NAME @"walk"
+
 #endif /* PublicDefine_h */

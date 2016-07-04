@@ -1,18 +1,17 @@
 //
-//  TPPViewController.m
+//  TPPMineHelpViewController.m
 //  TaoPiaoPiao
 //
-//  Created by blackcater on 16/6/30.
+//  Created by blackcater on 16/7/5.
 //  Copyright (c) 2016 blackcater. All rights reserved.
 //
 
-#import "TPPViewController.h"
+#import "TPPMineHelpViewController.h"
 
-@interface TPPViewController ()
-
+@interface TPPMineHelpViewController()
 @end
 
-@implementation TPPViewController
+@implementation TPPMineHelpViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,17 +31,20 @@
     [super viewWillDisappear:animated];
 }
 
-// 初始化时做一些公共操作
 - (instancetype)init {
     self = [super init];
 
     if (self) {
-        // 设置背景颜色和大小
         self.view.backgroundColor = COLOR_RGB(245, 245, 245);
-        self.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     }
 
     return self;
+}
+
+#pragma mark -
+#pragma mark TPPMineViewDelegate
+- (void)tppMineViewCellClicked:(NSString *)title {
+    self.title = title;
 }
 
 @end

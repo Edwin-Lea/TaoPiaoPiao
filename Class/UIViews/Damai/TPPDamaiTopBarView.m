@@ -102,6 +102,8 @@
 
 - (void)addCategories {
     CGFloat left = 0;
+
+    UIButton *firstBtn = nil;
     for (int i = 0; i < self.categories.count; ++i) {
         NSString *title = self.categories[(NSUInteger)i];
         CGRect rect = CGRectMake(left, 0, 100, (self.frame.size.height-1));
@@ -123,14 +125,16 @@
         [self.categoryScrollView addSubview:button];
 
         if (i == 0) {
-            [button setSelected:YES];
-            [self performSelector:@selector(categoryBtnClickHandler:) withObject:button];
+            firstBtn = button;
         }
 
         [self.buttons addObject:button];
     }
 
     self.categoryScrollView.contentSize = CGSizeMake(left, (self.frame.size.height-1));
+
+    [firstBtn setSelected:YES];
+    [self performSelector:@selector(categoryBtnClickHandler:) withObject:firstBtn];
 }
 
 -(void)chooseLocation:(id)sender {
@@ -152,6 +156,27 @@
             lineFrame.size.width = (rect.size.width-20);
             lineFrame.origin.x = (rect.origin.x+10);
             self.categoryLine.frame = lineFrame;
+
+            // 修改图标位置 最小距离和最大距离指 categoryScrollView可见中心点距最左面距离
+            CGSize size = self.categoryScrollView.contentSize;
+            double maxX = (size.width-(SCREEN_WIDTH-88)/2);
+            double minX = (SCREEN_WIDTH-88)/2;
+            // btn中心距最左面距离
+            double btnCenter = (button.frame.origin.x + button.frame.size.width/2);
+            if (btnCenter >= minX && btnCenter <= maxX) {
+                CGPoint point = self.categoryScrollView.frame.origin;
+                point.x = (CGFloat)(btnCenter-(SCREEN_WIDTH-88)/2);
+                self.categoryScrollView.contentOffset= point;
+            } else if (btnCenter > maxX) {
+                CGPoint point = self.categoryScrollView.frame.origin;
+                point.x = (size.width-(SCREEN_WIDTH-88));
+                self.categoryScrollView.contentOffset= point;
+            } else {
+                CGPoint point = self.categoryScrollView.frame.origin;
+                point.x = 0;
+                self.categoryScrollView.contentOffset= point;
+            }
+
         } completion:^(BOOL flag) {
             // TODO : 点击完毕加载数据
         }];

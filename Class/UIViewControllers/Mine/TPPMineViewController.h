@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "TPPViewController.h"
 
+@protocol TPPMineViewDelegate <NSObject>
+
+@required
+- (void)tppMineViewCellClicked:(NSString *)title;
+
+@end
+
 @interface TPPMineViewController : TPPViewController
 
 @end

@@ -7,7 +7,10 @@
 //
 
 #import "TPPMineViewController.h"
-#import "TPPNavigationController.h"
+#import "TPPMineWantsViewController.h"
+#import "TPPMineSeenViewController.h"
+#import "TPPMineHelpViewController.h"
+#import "TPPMineSettingViewController.h"
 
 @interface TPPMineViewController() <UITableViewDataSource, UITableViewDelegate>
 
@@ -18,6 +21,9 @@
 @property (nonatomic, strong) UIButton *message;
 @property (nonatomic, strong) UIImageView *btns;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray *array;
+
+@property (nonatomic, weak) id<TPPMineViewDelegate> delegate;
 
 @end
 
@@ -74,6 +80,14 @@
     [view addSubview:self.message];
 
     return view;
+}
+
+- (NSArray *)array {
+    if (!_array) {
+        _array = @[@"想看的电影", @"看过的电影", @"帮组中心", @"设置"];
+    }
+
+    return _array;
 }
 
 - (UIImageView *)remind {
@@ -173,13 +187,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier = @"MineCell";
-    NSArray *array = @[@"想看的电影", @"看过的电影", @"帮组中心", @"设置"];
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.text = array[(NSUInteger)indexPath.row];
+        cell.textLabel.text = self.array[(NSUInteger)indexPath.row];
+
+        // 添加手势
+        UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellClickHandler:)];
+        gestureRecognizer.numberOfTapsRequired = 1;
+        cell.tag = indexPath.row;
+        [cell addGestureRecognizer:gestureRecognizer];
     }
 
     return cell;
@@ -198,6 +218,60 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [cell setSelected:!cell.selected];
+}
+
+#pragma mark -
+#pragma mark owner delegate
+- (void)cellClickHandler:(UITapGestureRecognizer *)recognizer {
+    NSUInteger index = (NSUInteger)recognizer.view.tag;
+    NSString *title = self.array[index];
+    switch (index) {
+        case 0:
+        {
+            // 想看的电影
+            TPPMineWantsViewController *controller = [[TPPMineWantsViewController alloc] init];
+            self.delegate = controller;
+            [self.delegate tppMineViewCellClicked:title];
+
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+            break;
+        case 1:
+        {
+            // 看过的电影
+            TPPMineSeenViewController *controller = [[TPPMineSeenViewController alloc] init];
+            self.delegate = controller;
+            [self.delegate tppMineViewCellClicked:title];
+
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+            break;
+        case 2:
+        {
+            // 帮助文档
+            TPPMineHelpViewController *controller = [[TPPMineHelpViewController alloc] init];
+            self.delegate = controller;
+            [self.delegate tppMineViewCellClicked:title];
+
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+            break;
+        case 3:
+        {
+            // 设置
+            TPPMineSettingViewController *controller = [[TPPMineSettingViewController alloc] init];
+            self.delegate = controller;
+            [self.delegate tppMineViewCellClicked:title];
+
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+            break;
+        default:
+        {
+
+        }
+            break;
+    }
 }
 
 @end

@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) TPPDamaiTopBarView *topBarView;
 @property (nonatomic, strong) TPPDamaiTableView *damaiTableView;
+@property (nonatomic, strong) NSArray *categories;
 
 @end
 
@@ -54,10 +55,17 @@
     [self.view addSubview:self.damaiTableView];
 }
 
+- (NSArray *)categories {
+    if (!_categories) {
+        _categories = @[@"全部演出", @"演唱会", @"音乐会", @"话剧歌剧", @"舞蹈芭蕾", @"曲苑杂坛"];
+    }
+
+    return _categories;
+}
+
 - (TPPDamaiTopBarView *)topBarView {
     if (!_topBarView) {
-        NSArray *categories = @[@"全部演出", @"演唱会", @"音乐会", @"话剧歌剧", @"舞蹈芭蕾", @"曲苑杂坛"];
-        _topBarView = [[TPPDamaiTopBarView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 42) categoreis:categories];
+        _topBarView = [[TPPDamaiTopBarView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 42) categoreis:self.categories];
     }
 
     return _topBarView;
