@@ -36,14 +36,26 @@
 - (void)render {
     [self addSubview:self.supportBtn];
     [self addSubview:self.commentBtn];
+
+    // 修正宽度
+    CGRect rect = self.frame;
+    rect.size.width = (self.supportBtn.frame.size.width+self.commentBtn.frame.size.width+10);
+    self.frame = rect;
 }
 
 - (UIButton *)supportBtn {
     if (!_supportBtn) {
-        _supportBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 52, 15)];
-        [_supportBtn setTitle:[NSString stringWithFormat:@"%d", self.supports] forState:UIControlStateNormal];
+        _supportBtn = [[UIButton alloc] init];
+
+        NSString *title = [NSString stringWithFormat:@"%d", self.supports];
+        _supportBtn.frame = CGRectMake(0, 0, (20+13*title.length), 15);
+        [_supportBtn setTitle: title forState:UIControlStateNormal];
         [_supportBtn setTitleColor:COLOR_RGB(138, 134, 158) forState:UIControlStateNormal];
         [_supportBtn setImage:[UIImage imageNamed:@"support.png"] forState:UIControlStateNormal];
+
+        _supportBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        [_supportBtn.imageView setContentMode:UIViewContentModeScaleAspectFit];
+
         // TODO : 暂时没有激活时候图片
     }
     return _supportBtn;
@@ -51,10 +63,17 @@
 
 - (UIButton *)commentBtn {
     if (!_commentBtn) {
-        _commentBtn = [[UIButton alloc] initWithFrame:CGRectMake(52, 0, 52, 15)];
+        _commentBtn = [[UIButton alloc] init];
+
+        NSString *title = [NSString stringWithFormat:@"%d", self.comments];
+        _commentBtn.frame = CGRectMake((self.supportBtn.frame.size.width+8), 0, (20+13*title.length), 15);
         [_commentBtn setTitle:[NSString stringWithFormat:@"%d", self.comments] forState:UIControlStateNormal];
         [_commentBtn setTitleColor:COLOR_RGB(138, 134, 158) forState:UIControlStateNormal];
         [_commentBtn setImage:[UIImage imageNamed:@"comment.png"] forState:UIControlStateNormal];
+
+        _commentBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        [_commentBtn.imageView setContentMode:UIViewContentModeScaleAspectFit];
+
         // TODO : 暂时没有激活时候图片
     }
 

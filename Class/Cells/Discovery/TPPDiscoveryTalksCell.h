@@ -1,5 +1,5 @@
 //
-//  TPPDiscoveryLinesCell.h
+//  TPPDiscoveryTalksCell.h
 //  TaoPiaoPiao
 //
 //  Created by blackcater on 16/7/3.
@@ -10,9 +10,9 @@
 
 @class TPPDiscoveryModel;
 
-@interface TPPDiscoveryLinesCell : UITableViewCell
+@interface TPPDiscoveryTalksCell : UITableViewCell
 
-- (void)setData:(TPPDiscoveryModel *)data;
+- (void)setData:(TPPDiscoveryModel *)data ;
 
 - (instancetype)render;
 

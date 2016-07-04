@@ -97,4 +97,12 @@
     self.pageControl.currentPage = index;
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+
+}
+
 @end

@@ -142,7 +142,7 @@
 - (UILabel *)wantsLabel {
     if (!_wantsLabel) {
         _wantsLabel = [[UILabel alloc] initWithFrame:CGRectMake(MinX(self.titleLabel), (MaxY(self.titleLabel)+4), 210, 11)];
-        _wantsLabel.text = [NSString stringWithFormat:@"%d人想看", self.data.wants];
+        _wantsLabel.text = [NSString stringWithFormat:@"%d人想看", (int)self.data.wants];
         _wantsLabel.font = [UIFont systemFontOfSize:10];
         [_wantsLabel setTextColor:COLOR_RGB(254, 165, 76)];
         // 自适应UILabel宽度

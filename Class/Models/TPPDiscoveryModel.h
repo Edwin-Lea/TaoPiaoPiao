@@ -13,8 +13,6 @@
 @property (nonatomic, copy) NSString *imageNamed;
 @property (nonatomic, copy) NSString *question;
 @property (nonatomic, copy) NSString *desc;
-@property (nonatomic, copy) NSString *paragraph;
-@property (nonatomic, copy) NSString *from;
 @property (nonatomic, copy) NSString *category;
 @property (nonatomic, assign) double cellHeight;
 @property (nonatomic, assign) double time;

@@ -39,7 +39,7 @@
     self = [super init];
 
     if (self) {
-
+        [self render];
     }
 
     return self;
@@ -51,7 +51,7 @@
 
 - (TPPDiscoveryTableView *)tableView {
     if (!_tableView) {
-        _tableView = [[TPPDiscoveryTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_HEIGHT-64-44)) style:UITableViewStyleGrouped];
+        _tableView = [[TPPDiscoveryTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_HEIGHT-44)) style:UITableViewStyleGrouped];
     }
 
     return _tableView;

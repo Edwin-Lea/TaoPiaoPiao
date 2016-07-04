@@ -28,7 +28,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
 
     if (self) {
-
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
 
     return self;
@@ -63,7 +63,7 @@
 
 - (UILabel *)descLabel {
     if (!_descLabel) {
-        _descLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, (MaxY(self.questionLabel)+12), 200, 50)];
+        _descLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, (MaxY(self.questionLabel)+12), 200, 15)];
         _descLabel.text = self.data.desc;
         _descLabel.textColor = COLOR_RGB(138, 134, 158);
         _descLabel.font = [UIFont systemFontOfSize:13];
@@ -77,17 +77,19 @@
 - (UIImageView *)newsImage {
     if (!_newsImage) {
         _newsImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.data.imageNamed]];
-        _newsImage.frame = CGRectMake((SCREEN_WIDTH-95-15),  20, 95, 45);
+        _newsImage.frame = CGRectMake((SCREEN_WIDTH-132-15),  20, 132, 95);
     }
+
+
 
     return _newsImage;
 }
 
 - (UILabel *)categoryLabel {
     if (!_categoryLabel) {
-        _categoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, (SCREEN_HEIGHT-32), 200, 15)];
+        _categoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, (165-32), 200, 15)];
         _categoryLabel.text = self.data.category;
-        _categoryLabel.textColor = COLOR_RGB(138, 134, 158);;
+        _categoryLabel.textColor = COLOR_RGB(138, 134, 158);
         _categoryLabel.font = [UIFont systemFontOfSize:12];
     }
 
@@ -96,7 +98,10 @@
 
 - (TPPDiscoveryCommonView *)commonView {
     if (!_commonView) {
-        _commonView = [[TPPDiscoveryCommonView alloc] initWithPoint:CGPointMake((SCREEN_WIDTH-110-15), (MaxY(self.imageView)+18)) supports:self.data.supports comments:self.data.comments];
+        _commonView = [[TPPDiscoveryCommonView alloc] initWithPoint:CGPointMake((SCREEN_WIDTH-110-15), (MaxY(self.newsImage)+18)) supports:self.data.supports comments:self.data.comments];
+        CGRect rect = _commonView.frame;
+        rect.origin.x = (SCREEN_WIDTH-_commonView.frame.size.width-15);
+        _commonView.frame = rect;
     }
 
     return _commonView;
