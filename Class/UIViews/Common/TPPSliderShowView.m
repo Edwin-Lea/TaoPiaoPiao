@@ -19,6 +19,8 @@
 @property (nonatomic, assign) CGFloat width;
 @property (nonatomic, assign) CGFloat height;
 
+@property (nonatomic, weak) NSTimer *timer;
+
 @end
 
 @implementation TPPSliderShowView
@@ -47,6 +49,9 @@
     [self addImagesToScrollView];
     [self addSubview:self.scrollView];
     [self addSubview:self.pageControl];
+
+    // 启动定时器
+    [self startTimer];
 }
 
 - (UIScrollView *)scrollView {
@@ -98,11 +103,41 @@
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-
+    [self stopTimer];
 }
 
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self startTimer];
+}
 
+
+
+#pragma mark -
+#pragma mark 定时器操作
+- (void)startTimer
+{
+    _timer = [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(changeScrollViewIndex) userInfo:nil repeats:YES];
+}
+
+- (void)stopTimer
+{
+    [_timer invalidate];
+    _timer = nil;
+}
+
+- (void)changeScrollViewIndex {
+    int index = (int)self.pageControl.currentPage;
+    if ((index+1) >= self.num) {
+        [UIView animateWithDuration:0.4 delay:0.0 options:(UIViewAnimationOptions) UIViewAnimationCurveEaseInOut animations:^{
+            self.scrollView.contentOffset = CGPointMake(0, 0);
+        }                completion:^(BOOL flag) {
+        }];
+//        self.pageControl.currentPage = 0;
+    } else {
+        [UIView animateWithDuration:0.4 delay:0.0 options:(UIViewAnimationOptions) UIViewAnimationCurveEaseInOut animations:^{
+            self.scrollView.contentOffset = CGPointMake((index+1)*SCREEN_WIDTH, 0);
+        } completion:^(BOOL flag) {}];
+    }
 }
 
 @end
