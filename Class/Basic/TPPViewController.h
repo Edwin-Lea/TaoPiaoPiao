@@ -10,4 +10,12 @@
 
 @interface TPPViewController : UIViewController
 
+- (void) addCityBarButton;
+
+- (void) addSearchBarButton;
+
+- (void) addScanBarButton;
+
+- (void) addCinemaBarButton;
+
 @end

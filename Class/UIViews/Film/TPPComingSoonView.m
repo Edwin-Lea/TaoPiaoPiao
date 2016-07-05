@@ -10,6 +10,7 @@
 #import "TPPFilmCell.h"
 #import "TPPFilmModel.h"
 #import "DateEnhance.h"
+#import "TPPFilmInfoViewController.h"
 
 @interface TPPComingSoonView() <UITableViewDelegate, UITableViewDataSource>
 
@@ -161,33 +162,31 @@
             TPPFilmCell *filmCell = [[TPPFilmCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
             [filmCell setData:(TPPFilmModel *) [self.datas[(NSUInteger) section] objectAtIndex:(NSUInteger)index]];
             cell = [filmCell renderComingSoonSell];
+
+            // 添加点击事件
+            UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellClickHandler:)];
+            gestureRecognizer.numberOfTapsRequired = 1;
+            cell.tag = indexPath.section*10+indexPath.row;
+            [cell addGestureRecognizer:gestureRecognizer];
         }
     }
 
     return cell;
 }
 
+- (void)cellClickHandler:(UITapGestureRecognizer *)recognizer {
+    int tag = (int)recognizer.view.tag;
+    int section = (int)floor(tag/10);
+    int row = (tag-(section*10));
+    TPPFilmModel *model = [self.datas[(NSUInteger) section] objectAtIndex:(NSUInteger)row];
+
+    if ([self.ownDelegate respondsToSelector:@selector(cellClick:)]) {
+        [self.ownDelegate cellClick:model];
+    }
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [self.datas count];
 }
-
-/*//去掉UItableview headerview黏性(sticky)
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-
-    if (scrollView == self)
-
-    {
-        CGFloat sectionHeaderHeight = 36; //sectionHeaderHeight
-
-        if (scrollView.contentOffset.y <= sectionHeaderHeight && scrollView.contentOffset.y >= 0) {
-            scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
-        } else if (scrollView.contentOffset.y >= sectionHeaderHeight) {
-            scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
-        }
-
-    }
-
-}*/
 
 @end

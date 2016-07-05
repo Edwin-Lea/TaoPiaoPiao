@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class TPPFilmModel;
+
+@protocol TPPCurrentHotDelegate <NSObject>
+
+- (void)hotCellClick:(TPPFilmModel *)model;
+
+@end
+
 @interface TPPCurrentHotView : UITableView
+
+@property (nonatomic, weak) id<TPPCurrentHotDelegate> ownDelegate;
 
 @end

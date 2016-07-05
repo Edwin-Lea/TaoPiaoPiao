@@ -11,6 +11,7 @@
 #import "TPPTabBarController.h"
 #import "CoreDataManager.h"
 #import "TPPWelcomeView.h"
+#import "TPPFileManager.h"
 
 #define WELCOME_ACTIVE_NAME @"welcome_page_active"
 
@@ -40,6 +41,12 @@
         TPPWelcomeView *welcomeView = [[TPPWelcomeView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
         [self.window addSubview:welcomeView];
     }
+
+    NSString *homeDir = NSHomeDirectory();
+    NSLog(@"homedir : %@", homeDir);
+
+    NSDictionary *dict = [[TPPFileManager getInstance] readDictionaryFromFile:@"city"];
+    NSLog(@"%@", dict);
 
     return YES;
 }

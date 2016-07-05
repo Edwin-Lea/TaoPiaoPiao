@@ -103,8 +103,12 @@
 - (void)btnClickUpHandler:(UIButton *)button {
     button.backgroundColor = [UIColor clearColor];
 
-    // 清除视图
-    [self removeFromSuperview];
+    [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.alpha = 0.0;
+    } completion:^(BOOL flag) {
+        // 清除视图
+        [self removeFromSuperview];
+    }];
 }
 
 #pragma mark -

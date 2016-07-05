@@ -144,8 +144,22 @@
             }
         }
     }
-    
+
+
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellClickHandler:)];
+    tapGestureRecognizer.numberOfTapsRequired = 1;
+    cell.tag = indexPath.row;
+    [cell addGestureRecognizer:tapGestureRecognizer];
+
+
     return cell;
+}
+
+- (void)cellClickHandler:(UITapGestureRecognizer *)recognizer{
+    TPPFilmModel *model = self.datas[(NSUInteger)recognizer.view.tag];
+    if (self.ownDelegate && [self.ownDelegate respondsToSelector:@selector(hotCellClick:)]) {
+        [self.ownDelegate hotCellClick:model];
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

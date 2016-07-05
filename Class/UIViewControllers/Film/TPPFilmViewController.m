@@ -10,8 +10,9 @@
 #import "TPPCurrentHotView.h"
 #import "TPPComingSoonView.h"
 #import "TPPNavigationController.h"
+#import "TPPFilmInfoViewController.h"
 
-@interface TPPFilmViewController() <UIScrollViewDelegate>
+@interface TPPFilmViewController() <UIScrollViewDelegate, TPPComingSoonViewDelegate, TPPCurrentHotDelegate>
 
 // 可能会用到代理
 @property (nonatomic, strong) TPPCurrentHotView *currentHotView;
@@ -37,6 +38,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+
+    // 添加城市选择button
+    [self addCityBarButton];
 
     TPPNavigationController *navigationController = (TPPNavigationController *)self.navigationController;
     [navigationController removeUnderline];
@@ -69,6 +73,7 @@
 - (TPPCurrentHotView *)currentHotView {
     if (!_currentHotView) {
         _currentHotView = [[TPPCurrentHotView alloc] initWithFrame:CGRectMake(0, 44, SCREEN_WIDTH, (SCREEN_HEIGHT-64-44-44)) style:UITableViewStylePlain];
+        _currentHotView.ownDelegate = self;
     }
 
     return _currentHotView;
@@ -77,6 +82,7 @@
 - (TPPComingSoonView *)comingSoonView {
     if (!_comingSoonView) {
         _comingSoonView = [[TPPComingSoonView alloc] initWithFrame:CGRectMake(0, 44, SCREEN_WIDTH, (SCREEN_HEIGHT-64-44-44)) style:UITableViewStyleGrouped];
+        _comingSoonView.ownDelegate = self;
     }
 
     return _comingSoonView;
@@ -239,6 +245,18 @@
 #pragma mark UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 
+}
+
+#pragma mark -
+#pragma mark 自定义代理 - TPPComingSoonViewDelegate
+- (void)cellClick:(TPPFilmModel *)model {
+    TPPFilmInfoViewController *viewController = [[TPPFilmInfoViewController alloc] initWithModel:model];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (void)hotCellClick:(TPPFilmModel *)model {
+    TPPFilmInfoViewController *viewController = [[TPPFilmInfoViewController alloc] initWithModel:model];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end

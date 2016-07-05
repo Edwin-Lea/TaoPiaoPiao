@@ -7,6 +7,7 @@
 //
 
 #import "TPPViewController.h"
+#import "TPPCityChooseView.h"
 
 @interface TPPViewController ()
 
@@ -43,6 +44,47 @@
     }
 
     return self;
+}
+
+/**
+ * 用于选择当前位置
+ */
+- (void) addCityBarButton {
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"大连" style:UIBarButtonItemStylePlain target:self action:@selector(cityBarButtonClick:)];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName: COLOR_RGB(80, 80, 90)} forState:UIControlStateNormal];
+    self.navigationItem.leftBarButtonItem = item;
+}
+
+- (void)cityBarButtonClick:(id)sender {
+    TPPCityChooseView *cityChooseView = [[TPPCityChooseView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    [[UIApplication sharedApplication].keyWindow addSubview:cityChooseView];
+
+    [UIView animateWithDuration:.6 delay:0.0 options: UIViewAnimationOptionCurveEaseInOut animations:^{
+        CGRect rect = cityChooseView.frame;
+        rect.origin.y = 0;
+        cityChooseView.frame = rect;
+    } completion:^(BOOL flag) {}];
+}
+
+/**
+ * 用于搜索
+ */
+- (void) addSearchBarButton {
+
+}
+
+/**
+ * 用于扫描二维码
+ */
+- (void) addScanBarButton {
+
+}
+
+/**
+ * 用于选择赛选影院
+ */
+- (void) addCinemaBarButton {
+
 }
 
 @end
