@@ -44,4 +44,19 @@
     return self;
 }
 
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+
+    // 第一个controller左button不确定, 其他controller左button为特定
+    if (self.viewControllers.count > 0) {
+        // 设置左button样式
+        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"back_button_normal.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(backBtnClick:)];
+    }
+
+    [super pushViewController:viewController animated:animated];
+}
+
+- (void)backBtnClick:(id)sender {
+    [self popViewControllerAnimated:YES];
+}
+
 @end

@@ -12,6 +12,7 @@
 #import "CoreDataManager.h"
 #import "TPPWelcomeView.h"
 
+#define WELCOME_ACTIVE_NAME @"welcome_page_active"
 
 @interface AppDelegate ()
 
@@ -31,9 +32,14 @@
     [self.window makeKeyAndVisible];
 
 
-    // 添加新功能介绍页
-    TPPWelcomeView *welcomeViewController = [[TPPWelcomeView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    [self.window addSubview:welcomeViewController];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL flag = [[defaults objectForKey:WELCOME_ACTIVE_NAME] boolValue];
+    if (!flag) {
+        [defaults setBool:YES forKey:WELCOME_ACTIVE_NAME];
+        // 设置启动页
+        TPPWelcomeView *welcomeView = [[TPPWelcomeView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        [self.window addSubview:welcomeView];
+    }
 
     return YES;
 }
